@@ -18,6 +18,9 @@ const client = new line.Client(configs);
 
 const app = express();
 
+app.get('/',(req,res)=>{
+  res.send('PiPi Bot is Running!');
+});
 
 app.post('/callback', line.middleware(configs), (req, res) => {
   Promise
