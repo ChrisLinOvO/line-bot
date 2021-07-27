@@ -20,22 +20,24 @@ async function MsgInsert(msg,id,gp_id){//--判斷@@&輸入到Database
                 console.log(err);
             });
         }
-        else if(msg.includes('$$') && msg.length==2){//輸出當下所有 文章編號/總攬  EX:$$
-            getIDall(id,gp_id).then((data)=>{             
+        else if(!msg.includes('$$$my') && msg.includes('$$$') && msg.length>3){//輸出當下所有 文章編號/總攬  EX:$$$0
+            const number=msg.substr(3);
+            getIDall(id, gp_id, number).then((data)=>{             
                 resolve(data);
             }).catch((err)=>{
                 console.log(err);
             });
         }
-        else if(msg.includes('$$my') && msg.length==4){//輸出自己所有 文章編號/總攬 EX:$$my            
-            getIDall(id,'0').then((data)=>{             
+        else if(msg.includes('$$$my') && msg.length==4){//輸出自己所有 文章編號/總攬 EX:$$$my0
+            const number=msg.substr(5);
+            getIDall(id, '0', number).then((data)=>{             
                 resolve(data);
             }).catch((err)=>{
                 console.log(err);
             });
         }
-        else if(msg.includes('$$my') && msg.length>4){//輸出自己所有 文章編號/總攬 EX:$$my            
-            const number=msg.substr(4);
+        else if(msg.includes('$$my') && msg.length>5){//輸出自己所有 文章編號/總攬 EX:$$$my
+            const number=msg.substr(5);
             getIDnb(id,'0',number).then((data)=>{             
                 resolve(data);
             }).catch((err)=>{

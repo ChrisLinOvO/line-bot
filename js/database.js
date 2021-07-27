@@ -24,7 +24,8 @@ async function insert(cla,msg,id,gp_id){//-輸入資料 @@=public $$=private
     });
 }
 
-async function getIDall(id,gp_id){//--找database當下所有data編號&data content
+async function getIDall(id, gp_id, ctn){//--找database當下所有data編號&data content
+    let ctNb = parseInt(ctn);
     const posts = await loadPostsCollection();
     let Search_jg={'userId':`${id}`};//如果是私聊
     if(gp_id!='0')Search_jg={'groupId':`${gp_id}`};//-如果 是群組 / 不是私聊
@@ -36,11 +37,14 @@ async function getIDall(id,gp_id){//--找database當下所有data編號&data con
       said='目前沒有文章'; 
       return Promise.resolve(said);
     }
-    Object.values(datas).map((item,bigindex) =>{//-output many Obj array  
+
+    if(ctNb*10>datas.length)return Promise.resolve(`超過最大比數(${datas.length})`);
+
+    Object.values(datas).slice(ctNb*10, (ctNb +1) *10 ).map((item,bigindex) =>{//-output many Obj array  
         Object.values(item).forEach((element, index, array)=>{
           //console.log(element);
           if(index==1){
-            said=said+`----------------------\r\n(${bigindex})${element}`;
+            said=said+`----------------------\r\n(${ctNb*10+bigindex})${element}`;
           }else if(index==2){
             said=said+'\r\n'+element+'\r\n';
           }          
