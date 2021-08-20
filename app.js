@@ -53,7 +53,7 @@ function handleEvent(event) {
   //console.log(event);
   if(event.type == 'postback'){//-type=postack
     if(event.postback.data==='action=getdata'){
-      MsgGetIdAll(event.source.userId,'0').then((data)=>{//--Promise處理非同步 取得所有文章        
+      MsgGetIdAll(event.source.userId,'0').then((data)=>{//--Promise處理非同步取得所有文章        
           let echo = { 
             type: 'text',
             text: ''
