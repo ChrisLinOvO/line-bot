@@ -39,7 +39,7 @@ const teach_message={
   text: `\r\n指令介紹
   \r\n(當下=該群組/自己私聊)
   \r\n打開指令介紹:\r\n**
-  \r\n增加紀錄:\r\n@標題@內容\r\nEX:@好用的BOT@Line小皮妞BOT
+  \r\n增加紀錄:\r\n@標題@內容\r\nEX:@好用的BOT@QQ小皮妞😉
   \r\n搜詢當下關鍵字:\r\n@@關鍵字\r\nEX:@@BOT
   \r\n刪除當下第N筆文章:\r\n@$N\r\nEX:@$0
   \r\n輸出當下"文章編號(第N*10筆)":\r\n$$$N\r\nEX:$$$1
